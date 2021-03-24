@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from RestaurantApp import views
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('index/',views.index),
+    path('reservation/',views.reservation),
+    path('contact/',views.contact),
+    path('about/',views.about),
+    path('fooddetails/<int:id>',views.fooddetailsview),
+
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

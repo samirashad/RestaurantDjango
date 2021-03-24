@@ -9,7 +9,7 @@
 	<meta name="description" content="" />
 	<meta name="keywords" content="Restaurant,online reservation,food menu" />
 	<meta name="author" content="Django team" />
-	<!-- Facebook and Twitter integration -->
+  	<!-- Facebook and Twitter integration -->
 	<meta property="og:title" content=""/>
 	<meta property="og:image" content=""/>
 	<meta property="og:url" content=""/>
@@ -44,7 +44,6 @@
 
 	</head>
 	<body>
-		
 	<div class="fh5co-loader"></div>
 	
 	<div id="page">
@@ -57,9 +56,9 @@
 					</div>
 					<div class="col-xs-12 text-center menu-1 menu-wrap">
 						<ul>
-							<li ><a href="/index">Home</a></li>
+							<li><a href="/index">Home</a></li>
 							
-							<li class="active"><a href="/reservation">Reservation</a></li>
+							<li><a href="/reservation">Reservation</a></li>
 							<li><a href="/about">About</a></li>
 							<li><a href="/contact">Contact</a></li>
 						</ul>
@@ -69,93 +68,37 @@
 			</div>
 		<!-- </div> -->
 	</nav>
-
-	<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image: url({% static 'images/hero_1.jpeg' %});" data-stellar-background-ratio="0.5">
-		<div class="overlay"></div>
+ </br>
+	 	<div id="fh5co-about" class="fh5co-section">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12 text-center">
-					<div class="display-t js-fullheight">
-						<div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
-							<h1>Reserved a Table Today!</h1>
-						</div>
+				<div  class="col-md-4 col-md-pull-4 img-wrap animate-box" data-animate-effect="fadeInLeft">
+					<img  src="{{media_url}}{{food.ImageFood.url}}" alt="restaurant" width="800 px" height="400 px">
+				</div>
+				<div class="col-md-5 col-md-push-1 animate-box">
+					<div class="section-heading">
+						<h2>{{food.FoodName}}</h2>
+						<p ><strong>Price:</strong> {{food.Price}} tooman</p>
+						<p ><strong>Size:</strong> {% if food.Size == '1' %} 1 person {% elif food.Size == '2' %} 2 person {% else %} family {% endif %}</p>
+						<p ><strong>PreparationTime:</strong> {{food.PreparationTime}} minutes </p>
+						<p ><strong>SpecialFood:</strong> <input type='checkbox' {% if food.SpecialFood %} checked {% endif %} onclick="return false;" /> </p>
+						<p ><strong>Description:</strong> {{food.Description}} </p>
 					</div>
 				</div>
 			</div>
 		</div>
-	</header>
+	</div>
 
-	
-	<div id="fh5co-reservation-form" class="fh5co-section">
+
+	<div id="fh5co-started" class="fh5co-section animate-box" style="background-image: url({ % static 'images/hero_1.jpeg' %});" data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
 		<div class="container">
-			<div class="row">
-				<div class="col-md-12 fh5co-heading animate-box">
-					<h2>Reservation</h2>
-					<div class="row">
-						<div class="col-md-6">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ab debitis sit itaque totam, a maiores nihil, nulla magnam porro minima officiis! Doloribus aliquam voluptates corporis et tempora consequuntur ipsam, itaque, nesciunt similique commodi omnis. Ad magni perspiciatis, voluptatum repellat.</p>
-						</div>
-					</div>
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+					<h2>Book a Table</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae enim quae vitae cupiditate, sequi quam ea id dolor reiciendis consectetur repudiandae. Rem quam, repellendus veniam ipsa fuga maxime odio? Eaque!</p>
+					<p><a href="/reservation" class="btn btn-primary btn-outline">Book Now</a></p>
 				</div>
-				
-				<div class="col-md-6 col-md-push-6 col-sm-6 col-sm-push-6">
-					<form  method="post" id="form-wrap">
-                        {% csrf_token %}
-                                    
-						<div class="row form-group">
-							<div class="col-md-12">
-								<label for="firstname">FirstName</label>
-								<input type="text" class="form-control" id="firstname" name="FirstName">
-							</div>
-						</div>
-						<div class="row form-group">
-							<div class="col-md-12">
-								<label for="lastname">LastName</label>
-								<input type="text" class="form-control" id="lastname" name="LastName">
-							</div>
-						</div>
-							<div class="row form-group">
-							<div class="col-md-12">
-								<label for="mobile">Mobile</label>
-								<input type="text" class="form-control" id="mobile" name="Mobile">
-							</div>
-						</div>
-						<div class="row form-group">
-							<div class="col-md-12">
-								<label for="email">Email</label>
-								<input type="email" class="form-control" id="email" name="Email">
-							</div>
-						</div>
-						<div class="row form-group">
-							<div class="col-md-12">
-								<label for="many">How Many People</label>
-								<input name="NoOfPeople" id="Howmany" class="form-control">	
-							</div>
-						</div>
-						
-						<div class="row form-group">
-							<div class="col-md-12">
-								<label for="example-date-input">Date</label>
-								<input type="date" name="ReserveDate" id="example-date-input" class="form-control"/>
-							</div>
-						</div>
-						<div class="row form-group">
-							<div class="col-md-12">
-								<label for="example-time-input">Time</label>
-								<input type="text" name="ReserveTime" id="example-time-input" class="form-control"/>
-							</div>
-						</div>
-						
-						<div class="row form-group">
-							<div class="col-md-12">
-								<input type="submit" class="btn btn-primary btn-outline btn-lg" value="Submit Form">
-							</div>
-						</div>
-
-					</form>
-				</div>
-				
-				
 			</div>
 		</div>
 	</div>
@@ -176,6 +119,7 @@
 						<li><a href="/gallery">Gallery</a></li>
 					</ul>
 				</div>
+
 
 
 				<div class="col-md-4 col-md-push-1 fh5co-widget">
@@ -214,27 +158,23 @@
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up22"></i></a>
 	</div>
-	
+
 	<!-- jQuery -->
-	<script src="{% static 'js/jquery.min.js' %}"></script>
-	<!-- jQuery Easing -->
+	<script src="{% static 'js/jquery.min.js' %}"></script>  -->
+	<!-- jQuery Easing 
 	<script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
 	<!-- Bootstrap -->
-	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>  
 	<!-- Waypoints -->
 	<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
 	<!-- Waypoints -->
 	<script src="{% static 'js/jquery.stellar.min.js' %}"></script>
 	<!-- Flexslider -->
 	<script src="{% static 'js/jquery.flexslider-min.js' %}"></script>
-	<!-- Date Time -->
-	<script src="{% static 'js/moment.min.js' %}"></script>
-	<script src="{% static 'js/bootstrap-datetimepicker.js' %}"></script>
-	
-
 	<!-- Main -->
 	<script src="{% static 'js/main.js' %}"></script>
+	<script src="{% static 'js/bootstrap.js' %}"></script>
+	
+</body>
 
-	</body>
 </html>
-
